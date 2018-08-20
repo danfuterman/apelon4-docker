@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~    Copyright 2008 Apelon Inc.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<!DOCTYPE DBConfig SYSTEM "http://apelon.com/dtd/util/db/dbconfig.dtd">
+<DBConfig>
+  <!-- ORACLE CONNECTION -->
+<!--
+  <connection>
+    <property name="type" value="oracle"/>
+    <property name="user" value="dts4"/>
+    <property name="pass" value="dts4"/>
+    <property name="host" value="localhost"/>
+    <property name="databaseName" value="ORCL"/>
+    <property name="databasePort" value="1521"/>
+    <property name="jdbcDriver" value="oracle.jdbc.driver.OracleDriver"/>
+    <property name="url_template" value="jdbc:oracle:thin:@[HOST]:[PORT]:[DATABASE]"/>
+  </connection>
+-->
+  <!--
+		  ###################################
+		  #  Database Connection (sql2k)    #
+		  ###################################
+		-->
+  <!-- Microsoft Driver -->
+  <!--
+		<connection>
+				<property name="direction" value="target" />	
+		    <property name="type" value="sql2k" />
+		    <property name="user" value="sa" />
+		    <property name="pass" value="" />
+		    <property name="host" value="localhost" />
+		    <property name="databaseName" value="dts4" />
+		    <property name="databasePort" value="1433" />
+		    <property name="jdbcDriver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		    <property name="url_template" value="jdbc:sqlserver://[HOST]:[PORT];databasename=[DATABASE];forwardReadOnlyMethod=serverCursor" />
+    </connection>
+	  -->
+  <!-- I-Net Sprinta Driver -->
+  <!--
+	  <connection>
+				<property name="direction" value="target" />	
+				<property name="type" value="sql2k" />
+		 		<property name="user" value="sa" />
+				<property name="pass" value="" />
+				<property name="host" value="localhost" />
+				<property name="databaseName" value="dts4" />
+				<property name="databasePort" value="1433" />
+			  <property name="jdbcDriver" value="com.inet.tds.TdsDriver" />
+				<property name="url_template" value="jdbc:inetdae:[HOST]:[PORT]?database=[DATABASE]" />
+	  </connection> 
+	  -->
+  <!-- InterSystems Cache Connection Parameters -->
+  <!--
+  <connection>
+    <property name="direction" value="target" />
+    <property name="type" value="cache"/>
+    <property name="user" value="dts4"/>
+    <property name="pass" value="dts4"/>
+    <property name="host" value="localhost"/>
+    <property name="databaseName" value="dts4"/>
+    <property name="databasePort" value="1972"/>
+    <property name="jdbcDriver" value="com.intersys.jdbc.CacheDriver"/>
+    <property name="url_template" value="jdbc:Cache://[HOST]:[PORT]/[DATABASE]"/>
+  </connection>
+  -->
+  
+	  <!-- DB2 Connection Parameters -->
+  <!--
+	  <connection>
+	  	<property name="direction" value="target"/>
+	  	<property name="type" value="db2"/>
+	  	<property name="user" value="dts4"/>
+	  	<property name="pass" value=""/>
+	  	<property name="host" value="localhost"/>
+	  	<property name="databaseName" value="DTS4"/>
+	  	<property name="databasePort" value="50000"/>
+	  	<property name="jdbcDriver" value="com.ibm.db2.jcc.DB2Driver"/>
+	  	<property name="url_template" value="jdbc:db2://[HOST]:[PORT]/[DATABASE]"/>
+	  </connection>  
+	  -->
+	  	      
+	  <!-- MySQL Connection Parameters -->
+	  
+	  <connection>
+	  	<property name="direction" value="target" />
+	  	<property name="type" value="mysql"/>
+	  	<property name="user" value="dts4user"/>
+	  	<property name="pass" value="dts4password"/>
+	  	<property name="host" value="localhost"/>
+	  	<property name="databaseName" value="dts4"/>
+	  	<property name="databasePort" value="3306"/>
+	  	<property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+	  	<property name="url_template" value="jdbc:mysql://[HOST]:[PORT]/[DATABASE]"/>
+	  </connection>  
+      	 
+  
+  <!--
+	  If this knowledgebase will be primarily used as a staging database 
+	  for creating incremental subscriptions, then provide the 
+	  Master knowledgebase name in the property for masterKb, 
+	  which has the latest version of vocabularies and against which 
+	  subscription diff process will be done. 
+      This is needed to synchronize the global sequence with one on 
+      Master knowledgebase to avoid any IID collisions.
+	  	  
+	  Note: 
+	  - Expects Master knowledgebase to exist in the same database instance
+	    as the staging.
+	  - If this value is left blank then the numerical value provided 
+	    in kbcreate.bat switch -startSeq is used to seed the 
+	    global sequence generator.
+	  
+	  Example: 
+	  - For Oracle, its the user name (e.g dts)
+	  - For SQL2000, its the databaseName (e.g dts.dbo)
+	-->
+  <property name="masterKb" value=""/>
+</DBConfig>

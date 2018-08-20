@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~    Copyright 2008 Apelon Inc.
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<!DOCTYPE connectionConfig SYSTEM "http://apelon.com/dtd/util/db/dtd/connectionconfig.dtd">
+<connectionConfig>
+
+  <!--
+
+    A connectionConfig file can be used to override the connection parameters
+    specified in a config file by using the command line switches with any of
+    the DTS command line utilities (e.g. kbadmin, kbload or selext).
+
+    A copy of this file can be created with the custom connection parameters
+    to a data source you wish to use as a target or source for a KB utility.
+
+    Once the file has been created it can be specified on the command line
+    via a command line switch: -s, -t or -cp (see the comments and usage messages
+    for each utility).
+
+    In the kbcontent utilities (e.g. kbload, kbcreate, kbadmin, kbcontent-export, etc...)
+    the command line parameters are -s and -t.
+
+    -s specifies a connection to a source database -t specifies a connection to a target database
+
+    If -s is specified, the value of the direction property should be "source"
+    in the specified file.
+
+    If -t is specified the value of the  "direction" property should be "target"
+    in the specified file.
+
+    If a connectionConfig file is specified on the command line, the connection
+    parameters found in the connectionConfig file override any connection parameters
+    found in the utilities configuration file.
+
+  -->
+
+  <!--
+
+    MySQL connection.
+
+  -->
+  <connection>
+    <property name="direction" value="target" />
+    <property name="type" value="mysql"/>
+    <property name="user" value="dts4user"/>
+    <property name="pass" value="dts4password"/>
+    <property name="host" value="localhost"/>
+    <property name="databaseName" value="dts4"/>
+    <property name="databasePort" value="3306"/>
+    <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+    <property name="url_template" value="jdbc:mysql://[HOST]:[PORT]/[DATABASE]"/>
+  </connection>
+
+</connectionConfig>
